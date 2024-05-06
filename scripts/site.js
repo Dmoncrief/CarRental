@@ -20,7 +20,7 @@ const outputTotal = document.getElementById("outputTotal");
 
 
 window.onload = function(){
-    estimateTotalCostButton.onclick = EstimateTotalCostButtonClick;
+    estimateTotalCostButton.onclick = estimateTotalCostButtonClick;
 };
 
 
@@ -31,6 +31,31 @@ function onEstimateTotalCostButton() {
 
 
     // Calulate unknown values
+    let carRentalAmount = 29.99 * numOfDays;
+    let optionsAmount = 0;
+
+    if(isOptElectTooltag){
+        optionsAmount +=(3.95 * numOfDays);
+    }
+    {
+        if(OptGPS)
+            optionsAmount(2.95 * numOfDays);
+
+        
+    }
+    if(isOpRoadAsst){
+        optionsAmount += (2.95 * numOfDays);
+    }
+    let surchargeAmount;
+    if(isUnder25){
+        surchargeAmount = 0.30 * (carRentalAmount + optionsAmount);
+
+    }
+    else{
+        surchargeAmount = 0;
+    }
+
+    let totaldueAmount = carRentalAmount + optionsAmount + surchargeAmount;
 
 
 
@@ -38,3 +63,8 @@ function onEstimateTotalCostButton() {
     // display the results
 
 }
+outputCarRental.innerHTML = carRentalAmount;
+outputOptions.innerHtml = optionsAmount;
+outputSurcharge.innerHtml = surchargeAmount;
+outputTotal.innerHtml = totaldueAmount; 
+
